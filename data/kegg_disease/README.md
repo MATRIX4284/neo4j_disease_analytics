@@ -41,5 +41,6 @@ python add_taxonomy.py pathogen_tmp.csv > pathogen.csv
 
 ```console
 cd ./data
-cp *.csv ../../../import
+cp *.csv ../../../import/
 ```
+
