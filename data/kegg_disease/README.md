@@ -2,11 +2,6 @@
 
 # Introduction
 
-  
-
-  
-
-This repository contains code and data for my article "[Neo4j for Diseases](https://towardsdatascience.com/neo4j-for-diseases-959dffb5b479)".
 
 1. The scripts are for data processing.
 
