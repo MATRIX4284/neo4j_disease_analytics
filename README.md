@@ -16,9 +16,9 @@ cd ../..
 
 http://localhost:7474/browser/
 
-<img src="rimages/neo4j_browser.jpg" width="128"/>
+<img src="images/neo4j_browser.jpg" width="128"/>
 
-image:images/neo4j_browser.jpg
+
 
 
 ## Check if NEODASH UI is running by going to NEO4J UI SERVICE:
