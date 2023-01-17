@@ -38,3 +38,8 @@ python add_taxonomy.py pathogen_tmp.csv > pathogen.csv
 ```
 
 4. Put all the CSV files, except pathogen_tmp.csv, into the Import folder of your Neo4j project. 
+
+```console
+cd ./data
+cp *.csv ../../../import
+```
