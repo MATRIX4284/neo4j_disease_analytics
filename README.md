@@ -34,7 +34,7 @@ http://localhost:5005/
 
 
 ```console
-conda create -n neo4j python=3.8
+conda create -n neo4j python=3.7
 ```
 
 ### Activate the neo4j conda environment:
