@@ -15,3 +15,14 @@ cd ../..
 ## Check if neo4j is running by going to NEO4J browser service:
 
 http://localhost:7474/browser/
+
+## Check if NEODASH UI is running by going to NEO4J UI SERVICE:
+
+http://localhost:5005/
+
+## Importing DashBoard Into NEODASH UI
+
+## LOUVAIN ALGORITHM IN NEO4J BROWSER
+
+## PAGERANK ALGORITHM IN NEO4J 
+
