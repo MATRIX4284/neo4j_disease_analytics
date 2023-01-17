@@ -1,0 +1,4 @@
+netwotkx
+pyvis
+matplotlib
+scipy

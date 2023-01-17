@@ -1,0 +1,197 @@
+{
+  "title": "Diseases ,Pathogens and Drug Graph Visualization",
+  "version": "2.2",
+  "settings": {
+    "pagenumber": 0,
+    "editable": true,
+    "fullscreenEnabled": false,
+    "parameters": {}
+  },
+  "pages": [
+    {
+      "title": "Main Page",
+      "reports": [
+        {
+          "title": "Most frequent pathogens of Category Virus",
+          "query": "MATCH (v:pathogen) WHERE v.taxonomy contains \"virus\" RETURN split(v.taxonomy, \"; \")[0] + \"; \" +  split(v.taxonomy, \"; \")[1] as domain, COUNT(split(v.taxonomy, \"; \")[0] + \"; \" +  split(v.taxonomy, \"; \")[1]) as count ORDER BY count DESC;\n",
+          "width": 3,
+          "height": 2,
+          "x": 0,
+          "y": 0,
+          "type": "table",
+          "selection": {},
+          "settings": {}
+        },
+        {
+          "title": "Top 10 Disease Categories",
+          "query": "MATCH (d:disease) RETURN d.disease_category, COUNT(d.disease_category) as count ORDER BY count DESC LIMIT 10;\n\n\n\n",
+          "width": 3,
+          "height": 2,
+          "x": 3,
+          "y": 0,
+          "type": "bar",
+          "selection": {
+            "index": "d.disease_category",
+            "value": "count",
+            "key": "(none)"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Infectious diseases can be caused by viruses, bacteria or eukaryota",
+          "query": "MATCH (v:pathogen) RETURN split(v.taxonomy, \"; \")[0] as domain, COUNT(split(v.taxonomy, \"; \")[0]) as count ORDER BY count DESC;\n\n\n\n",
+          "width": 3,
+          "height": 2,
+          "x": 6,
+          "y": 0,
+          "type": "pie",
+          "selection": {
+            "index": "domain",
+            "value": "count",
+            "key": "(none)"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Usage of prednisolone sodium phosphate in Various Disease Categories",
+          "query": "MATCH (dr:drug) -[]->(di:disease) WHERE dr.name=\"Prednisolone sodium phosphate\" RETURN  di.disease_category, count(di.disease_category) as count ORDER BY count DESC LIMIT 10;\n\n\n\n",
+          "width": 3,
+          "height": 2,
+          "x": 9,
+          "y": 0,
+          "type": "pie",
+          "selection": {
+            "index": "di.disease_category",
+            "value": "count",
+            "key": "(none)"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Details about some pathogens",
+          "query": "MATCH (p:pathogen) -[r:causes]->(di:disease) RETURN p.name, COUNT(r) as count ORDER BY count DESC LIMIT 10; \n\n\n\n",
+          "width": 3,
+          "height": 2,
+          "x": 0,
+          "y": 2,
+          "type": "bar",
+          "selection": {
+            "index": "p.name",
+            "value": "count",
+            "key": "(none)"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Diseases Cured By Hydroxychloroquine Sulphate",
+          "query": "MATCH a=(dr:drug) -[]->() WHERE dr.name contains \"Hydroxychloroquine\" RETURN a\n\n\n",
+          "width": 3,
+          "height": 1,
+          "x": 3,
+          "y": 2,
+          "type": "graph",
+          "selection": {
+            "drug": "name",
+            "disease": "name"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Top 10 Multi Purpose Drugs",
+          "query": "MATCH (dr:drug) -[r:treats]->(di:disease) RETURN dr.name as drug, COUNT(r) as count ORDER BY count DESC LIMIT 10;\n\n",
+          "width": 3,
+          "height": 2,
+          "x": 6,
+          "y": 2,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Lung & Infectious Diseases Cured By Prednisolone sodium phosphate",
+          "query": "MATCH a=(dr:drug) -[]->(di:disease)<-[]-(pa:pathogen) WHERE dr.name=\"Prednisolone sodium phosphate\" AND (di.disease_category = \"Lung disease\" or di.disease_category=\"Infectious disease\") RETURN  a\n",
+          "width": 2,
+          "height": 1,
+          "x": 9,
+          "y": 2,
+          "type": "graph",
+          "selection": {
+            "drug": "name",
+            "disease": "name",
+            "pathogen": "name"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "All Diseases Cured By Prednisolone sodium phosphate",
+          "query": "MATCH a=(dr:drug) -[]->(di:disease) WHERE dr.name=\"Prednisolone sodium phosphate\"RETURN a\n\n\n",
+          "width": 2,
+          "height": 1,
+          "x": 0,
+          "y": 4,
+          "type": "graph",
+          "selection": {
+            "drug": "name",
+            "disease": "name"
+          },
+          "settings": {
+            "nodePositions": {},
+            "frozen": false
+          }
+        },
+        {
+          "title": "",
+          "query": "MATCH a=(:drug)-[]->(di:disease)<-[]-(pa:pathogen) where (di.disease_category=\"Infectious disease\") \nRETURN a\n\n\n",
+          "width": 3,
+          "height": 1,
+          "x": 3,
+          "y": 3,
+          "type": "graph",
+          "selection": {
+            "drug": "name",
+            "disease": "name",
+            "pathogen": "name"
+          },
+          "settings": {
+            "nodePositions": {},
+            "frozen": false
+          }
+        },
+        {
+          "title": "",
+          "query": "MATCH a=(:drug)-[]->(di:disease)<-[]-(pa:pathogen) RETURN a\n\n\n",
+          "width": 5,
+          "height": 3,
+          "x": 7,
+          "y": 4,
+          "type": "graph",
+          "selection": {
+            "drug": "name",
+            "disease": "description",
+            "pathogen": "taxonomy"
+          },
+          "settings": {
+            "nodePositions": {},
+            "frozen": false
+          }
+        }
+      ]
+    }
+  ],
+  "parameters": {},
+  "extensions": {}
+}

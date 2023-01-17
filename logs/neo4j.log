@@ -1,0 +1,140 @@
+2022-12-06 21:36:22.891+0000 INFO  Starting...
+2022-12-06 21:36:23.147+0000 INFO  This instance is ServerId{1cf8f285} (1cf8f285-fd24-4a33-be0c-5fa6d3bd1865)
+2022-12-06 21:36:23.570+0000 INFO  ======== Neo4j 5.2.0 ========
+2022-12-06 21:36:23.715+0000 INFO  GDS compatibility: for Neo4j Settings 4.x -- not available, for Neo4j Settings 5.1 -- not available, for Neo4j Settings 5.2.0 -- available, selected: Neo4j Settings 5.2.0
+2022-12-06 21:36:23.715+0000 INFO  GDS compatibility: for Neo4j 4.3 -- not available, for Neo4j 4.4 -- not available, for Neo4j 5.1 -- not available, for Neo4j 5.2.0 -- available, selected: Neo4j 5.2.0
+2022-12-06 21:36:35.382+0000 ERROR Failed to start Neo4j on 0.0.0.0:7474.
+java.lang.RuntimeException: Error starting Neo4j database server at /data/databases
+	at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.startDatabaseServer(DatabaseManagementServiceFactory.java:255) ~[neo4j-5.2.0.jar:5.2.0]
+	at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.build(DatabaseManagementServiceFactory.java:193) ~[neo4j-5.2.0.jar:5.2.0]
+	at org.neo4j.server.CommunityBootstrapper.createNeo(CommunityBootstrapper.java:36) ~[neo4j-5.2.0.jar:5.2.0]
+	at org.neo4j.server.NeoBootstrapper.start(NeoBootstrapper.java:164) ~[neo4j-5.2.0.jar:5.2.0]
+	at org.neo4j.server.NeoBootstrapper.start(NeoBootstrapper.java:85) ~[neo4j-5.2.0.jar:5.2.0]
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:30) ~[neo4j-5.2.0.jar:5.2.0]
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.procedure.impl.GlobalProceduresRegistry@939ff41' was successfully initialized, but failed to start. Please see the attached cause exception "Argument `nodeIds` at position 0 in `list` with
+type `List` cannot be converted to a Neo4j type: Default value `` could not be parsed as a LIST? OF INTEGER?".
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:370) ~[neo4j-common-5.2.0.jar:5.2.0]
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:92) ~[neo4j-common-5.2.0.jar:5.2.0]
+	at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.startDatabaseServer(DatabaseManagementServiceFactory.java:246) ~[neo4j-5.2.0.jar:5.2.0]
+	... 5 more
+	Suppressed: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.dbms.database.DatabaseLifecycles$AllDatabaseStopper@53f9ccbe' failed to stop. Please see the attached cause exception "System database is not (yet) available".
+		at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:384) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.lifecycle.LifeSupport.stopInstances(LifeSupport.java:212) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.lifecycle.LifeSupport.stop(LifeSupport.java:120) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:97) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.startDatabaseServer(DatabaseManagementServiceFactory.java:246) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.build(DatabaseManagementServiceFactory.java:193) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.server.CommunityBootstrapper.createNeo(CommunityBootstrapper.java:36) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.server.NeoBootstrapper.start(NeoBootstrapper.java:164) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.server.NeoBootstrapper.start(NeoBootstrapper.java:85) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:30) ~[neo4j-5.2.0.jar:5.2.0]
+	Caused by: org.neo4j.graphdb.DatabaseShutdownException: This database is shutdown.
+		at org.neo4j.kernel.database.SystemGraphDatabaseIdRepository.execute(SystemGraphDatabaseIdRepository.java:52) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.SystemGraphDatabaseIdRepository.getByName(SystemGraphDatabaseIdRepository.java:40) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.DatabaseIdRepository.getByName(DatabaseIdRepository.java:55) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.MapCachingDatabaseIdRepository.lambda$getByName$0(MapCachingDatabaseIdRepository.java:53) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1708) ~[?:?]
+		at org.neo4j.kernel.database.MapCachingDatabaseIdRepository.getByName(MapCachingDatabaseIdRepository.java:52) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.DatabaseIdRepository.getByName(DatabaseIdRepository.java:55) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseRepository.getDatabaseContext(DatabaseRepository.java:54) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseLifecycles.defaultContext(DatabaseLifecycles.java:75) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseLifecycles$AllDatabaseStopper.stop(DatabaseLifecycles.java:149) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:380) ~[neo4j-common-5.2.0.jar:5.2.0]
+		... 9 more
+	Caused by: org.neo4j.dbms.api.DatabaseManagementException: System database is not (yet) available
+		at org.neo4j.kernel.database.SystemGraphDatabaseIdRepository.execute(SystemGraphDatabaseIdRepository.java:52) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.SystemGraphDatabaseIdRepository.getByName(SystemGraphDatabaseIdRepository.java:40) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.DatabaseIdRepository.getByName(DatabaseIdRepository.java:55) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.MapCachingDatabaseIdRepository.lambda$getByName$0(MapCachingDatabaseIdRepository.java:53) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1708) ~[?:?]
+		at org.neo4j.kernel.database.MapCachingDatabaseIdRepository.getByName(MapCachingDatabaseIdRepository.java:52) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.DatabaseIdRepository.getByName(DatabaseIdRepository.java:55) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseRepository.getDatabaseContext(DatabaseRepository.java:54) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseLifecycles.defaultContext(DatabaseLifecycles.java:75) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseLifecycles$AllDatabaseStopper.stop(DatabaseLifecycles.java:149) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:380) ~[neo4j-common-5.2.0.jar:5.2.0]
+		... 9 more
+Caused by: org.neo4j.internal.kernel.api.exceptions.ProcedureException: Argument `nodeIds` at position 0 in `list` with
+type `List` cannot be converted to a Neo4j type: Default value `` could not be parsed as a LIST? OF INTEGER?
+	at org.neo4j.procedure.impl.MethodSignatureCompiler.signatureFor(MethodSignatureCompiler.java:110) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.procedure.impl.ProcedureCompiler.compileProcedure(ProcedureCompiler.java:229) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.procedure.impl.ProcedureCompiler.compileProcedure(ProcedureCompiler.java:206) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.procedure.impl.ProcedureJarLoader.loadProcedures(ProcedureJarLoader.java:108) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.procedure.impl.ProcedureJarLoader.loadProceduresFromDir(ProcedureJarLoader.java:88) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.procedure.impl.GlobalProceduresRegistry.start(GlobalProceduresRegistry.java:338) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:353) ~[neo4j-common-5.2.0.jar:5.2.0]
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:92) ~[neo4j-common-5.2.0.jar:5.2.0]
+	at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.startDatabaseServer(DatabaseManagementServiceFactory.java:246) ~[neo4j-5.2.0.jar:5.2.0]
+	... 5 more
+2022-12-06 21:36:35.384+0000 INFO  Neo4j Server shutdown initiated by request
+2022-12-06 21:36:35.385+0000 INFO  Stopped.
+2023-01-02 13:03:27.833+0000 INFO  Starting...
+2023-01-02 13:03:28.115+0000 INFO  This instance is ServerId{1cf8f285} (1cf8f285-fd24-4a33-be0c-5fa6d3bd1865)
+2023-01-02 13:03:28.535+0000 INFO  ======== Neo4j 5.2.0 ========
+2023-01-02 13:03:28.692+0000 INFO  GDS compatibility: for Neo4j Settings 4.x -- not available, for Neo4j Settings 5.1 -- not available, for Neo4j Settings 5.2.0 -- available, for Neo4j Settings 5.3 -- not available, selected: Neo4j Settings 5.2.0
+2023-01-02 13:03:28.692+0000 INFO  GDS compatibility: for Neo4j 4.3 -- not available, for Neo4j 4.4 -- not available, for Neo4j 5.1 -- not available, for Neo4j 5.2.0 -- available, for Neo4j 5.3 -- not available, selected: Neo4j 5.2.0
+2023-01-02 13:03:40.411+0000 ERROR Failed to start Neo4j on 0.0.0.0:7474.
+java.lang.RuntimeException: Error starting Neo4j database server at /data/databases
+	at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.startDatabaseServer(DatabaseManagementServiceFactory.java:255) ~[neo4j-5.2.0.jar:5.2.0]
+	at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.build(DatabaseManagementServiceFactory.java:193) ~[neo4j-5.2.0.jar:5.2.0]
+	at org.neo4j.server.CommunityBootstrapper.createNeo(CommunityBootstrapper.java:36) ~[neo4j-5.2.0.jar:5.2.0]
+	at org.neo4j.server.NeoBootstrapper.start(NeoBootstrapper.java:164) ~[neo4j-5.2.0.jar:5.2.0]
+	at org.neo4j.server.NeoBootstrapper.start(NeoBootstrapper.java:85) ~[neo4j-5.2.0.jar:5.2.0]
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:30) ~[neo4j-5.2.0.jar:5.2.0]
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.procedure.impl.GlobalProceduresRegistry@2d85fb64' was successfully initialized, but failed to start. Please see the attached cause exception "Argument `nodeIds` at position 0 in `list` with
+type `List` cannot be converted to a Neo4j type: Default value `` could not be parsed as a LIST? OF INTEGER?".
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:370) ~[neo4j-common-5.2.0.jar:5.2.0]
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:92) ~[neo4j-common-5.2.0.jar:5.2.0]
+	at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.startDatabaseServer(DatabaseManagementServiceFactory.java:246) ~[neo4j-5.2.0.jar:5.2.0]
+	... 5 more
+	Suppressed: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.dbms.database.DatabaseLifecycles$AllDatabaseStopper@19cd1a31' failed to stop. Please see the attached cause exception "System database is not (yet) available".
+		at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:384) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.lifecycle.LifeSupport.stopInstances(LifeSupport.java:212) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.lifecycle.LifeSupport.stop(LifeSupport.java:120) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:97) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.startDatabaseServer(DatabaseManagementServiceFactory.java:246) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.build(DatabaseManagementServiceFactory.java:193) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.server.CommunityBootstrapper.createNeo(CommunityBootstrapper.java:36) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.server.NeoBootstrapper.start(NeoBootstrapper.java:164) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.server.NeoBootstrapper.start(NeoBootstrapper.java:85) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:30) ~[neo4j-5.2.0.jar:5.2.0]
+	Caused by: org.neo4j.graphdb.DatabaseShutdownException: This database is shutdown.
+		at org.neo4j.kernel.database.SystemGraphDatabaseIdRepository.execute(SystemGraphDatabaseIdRepository.java:52) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.SystemGraphDatabaseIdRepository.getByName(SystemGraphDatabaseIdRepository.java:40) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.DatabaseIdRepository.getByName(DatabaseIdRepository.java:55) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.MapCachingDatabaseIdRepository.lambda$getByName$0(MapCachingDatabaseIdRepository.java:53) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1708) ~[?:?]
+		at org.neo4j.kernel.database.MapCachingDatabaseIdRepository.getByName(MapCachingDatabaseIdRepository.java:52) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.DatabaseIdRepository.getByName(DatabaseIdRepository.java:55) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseRepository.getDatabaseContext(DatabaseRepository.java:54) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseLifecycles.defaultContext(DatabaseLifecycles.java:75) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseLifecycles$AllDatabaseStopper.stop(DatabaseLifecycles.java:149) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:380) ~[neo4j-common-5.2.0.jar:5.2.0]
+		... 9 more
+	Caused by: org.neo4j.dbms.api.DatabaseManagementException: System database is not (yet) available
+		at org.neo4j.kernel.database.SystemGraphDatabaseIdRepository.execute(SystemGraphDatabaseIdRepository.java:52) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.SystemGraphDatabaseIdRepository.getByName(SystemGraphDatabaseIdRepository.java:40) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.DatabaseIdRepository.getByName(DatabaseIdRepository.java:55) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.MapCachingDatabaseIdRepository.lambda$getByName$0(MapCachingDatabaseIdRepository.java:53) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1708) ~[?:?]
+		at org.neo4j.kernel.database.MapCachingDatabaseIdRepository.getByName(MapCachingDatabaseIdRepository.java:52) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.database.DatabaseIdRepository.getByName(DatabaseIdRepository.java:55) ~[neo4j-common-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseRepository.getDatabaseContext(DatabaseRepository.java:54) ~[neo4j-kernel-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseLifecycles.defaultContext(DatabaseLifecycles.java:75) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.dbms.database.DatabaseLifecycles$AllDatabaseStopper.stop(DatabaseLifecycles.java:149) ~[neo4j-5.2.0.jar:5.2.0]
+		at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:380) ~[neo4j-common-5.2.0.jar:5.2.0]
+		... 9 more
+Caused by: org.neo4j.internal.kernel.api.exceptions.ProcedureException: Argument `nodeIds` at position 0 in `list` with
+type `List` cannot be converted to a Neo4j type: Default value `` could not be parsed as a LIST? OF INTEGER?
+	at org.neo4j.procedure.impl.MethodSignatureCompiler.signatureFor(MethodSignatureCompiler.java:110) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.procedure.impl.ProcedureCompiler.compileProcedure(ProcedureCompiler.java:229) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.procedure.impl.ProcedureCompiler.compileProcedure(ProcedureCompiler.java:206) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.procedure.impl.ProcedureJarLoader.loadProcedures(ProcedureJarLoader.java:108) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.procedure.impl.ProcedureJarLoader.loadProceduresFromDir(ProcedureJarLoader.java:88) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.procedure.impl.GlobalProceduresRegistry.start(GlobalProceduresRegistry.java:338) ~[neo4j-procedure-5.2.0.jar:5.2.0]
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:353) ~[neo4j-common-5.2.0.jar:5.2.0]
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:92) ~[neo4j-common-5.2.0.jar:5.2.0]
+	at org.neo4j.graphdb.facade.DatabaseManagementServiceFactory.startDatabaseServer(DatabaseManagementServiceFactory.java:246) ~[neo4j-5.2.0.jar:5.2.0]
+	... 5 more
+2023-01-02 13:03:40.414+0000 INFO  Neo4j Server shutdown initiated by request
+2023-01-02 13:03:40.415+0000 INFO  Stopped.

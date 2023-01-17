@@ -1,0 +1,36 @@
+{
+  "title": "Full Graph Visualization",
+  "version": "2.2",
+  "settings": {
+    "pagenumber": 0,
+    "editable": true,
+    "fullscreenEnabled": false,
+    "parameters": {}
+  },
+  "pages": [
+    {
+      "title": "Main Page",
+      "reports": [
+        {
+          "title": "",
+          "query": "MATCH a=(dr:drug)-[]->(di:disease)<-[]-(pa:pathogen) RETURN a\n\n\n",
+          "width": 9,
+          "height": 6,
+          "x": 3,
+          "y": 0,
+          "type": "graph",
+          "selection": {
+            "drug": "name",
+            "disease": "name",
+            "pathogen": "name"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        }
+      ]
+    }
+  ],
+  "parameters": {},
+  "extensions": {}
+}
