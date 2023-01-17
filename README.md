@@ -16,7 +16,7 @@ cd ../..
 
 http://localhost:7474/browser/
 
-image:images/neo4j_browser.png
+image:images/neo4j_browser.jpg
 
 
 ## Check if NEODASH UI is running by going to NEO4J UI SERVICE:
