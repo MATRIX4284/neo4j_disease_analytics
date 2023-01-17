@@ -22,9 +22,21 @@ http://localhost:5005/
 
 ## Import data into NEO4J  graph database
 
+### Create the conda environment:
+
+conda create -n neo4j python=3.8
+
+### Activate the neo4j conda environment:
+
+conda activate neo4j
+
+### Install the Required Packages:
+
+pip3 install -r requirements.txt
+
 ### Run python script to load the csv files into NEO4J graph database:
 
-python3
+python3 load_csv_neo4j.py
 
 ## Importing DashBoard Into NEODASH UI
 
