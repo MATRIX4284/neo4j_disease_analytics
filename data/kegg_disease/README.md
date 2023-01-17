@@ -2,14 +2,7 @@
 
 # Introduction
 
-
-1. The scripts are for data processing.
-
-  
-
-2. The data folder contains the five CSV to be imported into Neo4j.
-
-  
+Use The scripts below for data processing.
 
   
 
