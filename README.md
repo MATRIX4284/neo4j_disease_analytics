@@ -55,8 +55,6 @@ pip3 install -r requirements.txt
 python3 load_csv_neo4j.py
 ```
 
-## Importing DashBoard Into NEODASH UI
-
 ## LOUVAIN ALGORITHM IN NEO4J BROWSER
 
 ## PAGERANK ALGORITHM IN NEO4J 
