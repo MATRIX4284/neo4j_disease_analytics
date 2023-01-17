@@ -16,6 +16,8 @@ cd ../..
 
 http://localhost:7474/browser/
 
+<img src="rimages/neo4j_browser.jpg" width="128"/>
+
 image:images/neo4j_browser.jpg
 
 
