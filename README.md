@@ -20,6 +20,12 @@ http://localhost:7474/browser/
 
 http://localhost:5005/
 
+## Import data into NEO4J  graph database
+
+### Run python script to load the csv files into NEO4J graph database:
+
+python3
+
 ## Importing DashBoard Into NEODASH UI
 
 ## LOUVAIN ALGORITHM IN NEO4J BROWSER
