@@ -16,6 +16,7 @@ cd ../..
 
 http://localhost:7474/browser/
 
+
 ## Check if NEODASH UI is running by going to NEO4J UI SERVICE:
 
 http://localhost:5005/
@@ -24,19 +25,28 @@ http://localhost:5005/
 
 ### Create the conda environment:
 
+
+```console
 conda create -n neo4j python=3.8
+```
 
 ### Activate the neo4j conda environment:
 
+```console
 conda activate neo4j
+```
 
 ### Install the Required Packages:
 
+```console
 pip3 install -r requirements.txt
+```
 
 ### Run python script to load the csv files into NEO4J graph database:
 
+```console
 python3 load_csv_neo4j.py
+```
 
 ## Importing DashBoard Into NEODASH UI
 
