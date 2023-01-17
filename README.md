@@ -16,6 +16,8 @@ cd ../..
 
 http://localhost:7474/browser/
 
+image:images/Screenshot from 2023-01-18 03-36-35.png
+
 
 ## Check if NEODASH UI is running by going to NEO4J UI SERVICE:
 
