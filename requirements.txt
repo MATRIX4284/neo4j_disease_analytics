@@ -2,3 +2,4 @@ netwotkx
 pyvis
 matplotlib
 scipy
+neo4j
